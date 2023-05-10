@@ -52,7 +52,7 @@ exports.login = async(req,res)=>{
             message:"Please sign up first"
         })
     }
-    let payload = {
+    const payload = {
         email:email,
         user:user._id,
         role:user.role
