@@ -5,7 +5,8 @@ require("dotenv").config()
 
 exports.auth = async (req,res,next)=>{
     try{
-        const token = req.body.token || req.cookies.token || req.header("Authentication").replace("Bearer ","");
+        const token = req.body.token || (req.cookies)?req.cookies.token:NULL || (req.header)?req.header("Authentication").replace("Bearer ",""):NULL;
+        console.log(req.cookies)
         if(!token){
             return res.status(500).json({
                 message:"No token included",

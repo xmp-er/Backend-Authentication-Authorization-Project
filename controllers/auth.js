@@ -68,7 +68,7 @@ exports.login = async(req,res)=>{
             expires: new Date(Date.now()+3*24*3600*1000),
             httpOnly:true
         }
-        res.cookie("architscookie",token,options).status(200).json({
+        res.cookie("token",token,options).status(200).json({
             success:true,
             user:user,
             message:"User authenticated,sending a cookie with the same token",
