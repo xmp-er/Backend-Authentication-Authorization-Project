@@ -1,12 +1,11 @@
 const jwt = require("jsonwebtoken")
 const User = require("../models/user")
-
 require("dotenv").config()
 // auth,isStudent,isAdmin
 
 exports.auth = async (req,res,next)=>{
     try{
-        const {token} = req.body;
+        const token = req.body.token || req.cookies.token || req.header("Authentication").replace("Bearer ","");
         if(!token){
             return res.status(500).json({
                 message:"No token included",
